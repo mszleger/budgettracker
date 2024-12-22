@@ -6,19 +6,20 @@ class Category(models.Model):
 
     Attributes:
         name: Name of category.
+        sub_categories: Sub categories of category.
     """
     name = models.CharField(max_length = 150)
+    main_category = models.ForeignKey("self", on_delete=models.CASCADE, blank = True, null = True)
 
-class CategoryGroup(models.Model):
-    """
-    A model representing a relation between main and sub category of operations.
+    def __str__(self):
+        """
+        Dunder returning string representation of Category.
 
-    Attributes:
-        main_category: Foreign key of main category.
-        sub_category: Foreign key of sub category.
-    """
-    main_category = models.ForeignKey(Category, on_delete = models.CASCADE)
-    sub_category = models.ForeignKey(Category, on_delete = models.CASCADE)
+        :return: String representation of Category.
+        :rtype: str
+        """
+        return f'{self.name}'
+
 
 class Currency(models.Model):
     """
@@ -30,6 +31,16 @@ class Currency(models.Model):
     """
     code = models.CharField(max_length = 10)
     name = models.CharField(max_length = 50)
+
+    def __str__(self):
+        """
+        Dunder returning string representation of Currency.
+
+        :return: String representation of Currency.
+        :rtype: str
+        """
+        return f'{self.name}'
+
 
 class Operation(models.Model):
     """
@@ -47,5 +58,14 @@ class Operation(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
     currency = models.ForeignKey(Currency, on_delete = models.CASCADE)
     date = models.DateField()
-    description = models.TextField(blank = True)
+    description = models.TextField(blank = True, null = True)
     name = models.CharField(max_length = 150)
+
+    def __str__(self):
+        """
+        Dunder returning string representation of Operation.
+
+        :return: String representation of Operation.
+        :rtype: str
+        """
+        return f'{self.name}'
