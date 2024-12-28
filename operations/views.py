@@ -1,8 +1,16 @@
 from django.contrib.auth.models import User
+from django.shortcuts import render
 from operations.models import *
 from operations.serializers import *
 from rest_framework import generics
 from rest_framework import permissions
+
+
+def index(request):
+    '''
+    A view with index page of app.
+    '''
+    return render(request, 'operations/index.html')
 
 
 class CategoryList(generics.ListCreateAPIView):
