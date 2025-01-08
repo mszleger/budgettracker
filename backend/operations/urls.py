@@ -3,7 +3,6 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-    path('', views.index, name='index'),
     path('categories/', views.CategoryList.as_view()),
     path('categories/<int:pk>/', views.CategoryDetail.as_view()),
     path('currencies/', views.CurrencyList.as_view()),
