@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from operations.models import *
+from api.models import *
 from rest_framework import serializers
 
 

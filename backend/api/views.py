@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
-from operations.models import *
-from operations.serializers import *
+from api.models import *
+from api.serializers import *
 from rest_framework import generics
 from rest_framework import permissions
 
